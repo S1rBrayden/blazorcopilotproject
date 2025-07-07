@@ -1,0 +1,11 @@
+@code {
+    [Parameter]
+    public Event Event { get; set; }
+}
+
+<div class="event-card">
+    <h3>@Event.Name</h3>
+    <p>@Event.Date.ToString("MMMM dd, yyyy")</p>
+    <p>@Event.Location</p>
+    <a href="/event-details/@Event.Name">View Details</a>
+</div>
