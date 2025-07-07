@@ -1,0 +1,28 @@
+@page "/register/{eventName}"
+
+@code {
+    [Parameter]
+    public string EventName { get; set; }
+
+    private string userName;
+    private string userEmail;
+
+    private void Register()
+    {
+        // Registration logic here
+        Console.WriteLine($"User {userName} registered for {EventName} with email {userEmail}");
+    }
+}
+
+<h2>Register for @EventName</h2>
+<form>
+    <div>
+        <label>Name:</label>
+        <input type="text" @bind="userName" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" @bind="userEmail" />
+    </div>
+    <button type="button" @onclick="Register">Register</button>
+</form>
