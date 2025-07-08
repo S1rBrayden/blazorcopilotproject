@@ -1,28 +1,30 @@
-@page "/register/{eventName}"
+<EditForm Model="@registrationModel" OnValidSubmit="Register">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText @bind-Value="registrationModel.Name" placeholder="Name" />
+    <ValidationMessage For="@(() => registrationModel.Name)" />
+
+    <InputText @bind-Value="registrationModel.Email" placeholder="Email" />
+    <ValidationMessage For="@(() => registrationModel.Email)" />
+
+    <button type="submit">Register</button>
+</EditForm>
 
 @code {
-    [Parameter]
-    public string EventName { get; set; }
+    private RegistrationModel registrationModel = new();
 
-    private string userName;
-    private string userEmail;
+    private void Register()
+    {
+        // Store data or update UserSession
+    }
 
-    private void Register()
-    {
-        // Registration logic here
-        Console.WriteLine($"User {userName} registered for {EventName} with email {userEmail}");
-    }
+    public class RegistrationModel
+    {
+        [Required]
+        public string Name { get; set; }
+
+        [Required, EmailAddress]
+        public string Email { get; set; }
+    }
 }
-
-<h2>Register for @EventName</h2>
-<form>
-    <div>
-        <label>Name:</label>
-        <input type="text" @bind="userName" />
-    </div>
-    <div>
-        <label>Email:</label>
-        <input type="email" @bind="userEmail" />
-    </div>
-    <button type="button" @onclick="Register">Register</button>
-</form>
