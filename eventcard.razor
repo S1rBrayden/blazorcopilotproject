@@ -1,11 +1,12 @@
-@code {
-    [Parameter]
-    public Event Event { get; set; }
-}
+@using System.Globalization
+@inject NavigationManager Nav
 
-<div class="event-card">
-    <h3>@Event.Name</h3>
-    <p>@Event.Date.ToString("MMMM dd, yyyy")</p>
-    <p>@Event.Location</p>
-    <a href="/event-details/@Event.Name">View Details</a>
+<div class="event-card" @onclick="() => Nav.NavigateTo($"/eventdetails/{Event.Name}")">
+    <h3>@Event.Name</h3>
+    <p>@Event.Date.ToString("D", CultureInfo.CurrentCulture) — @Event.Location</p>
 </div>
+
+@code {
+    [Parameter]
+    public EventModel Event { get; set; }
+}
