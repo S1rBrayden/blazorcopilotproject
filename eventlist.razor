@@ -1,15 +1,12 @@
-@page "/events"
-
-@code {
-    private List<Event> events = new List<Event>
-    {
-        new Event { Name = "Corporate Gala", Date = new DateTime(2025, 8, 15), Location = "New York" },
-        new Event { Name = "Tech Conference", Date = new DateTime(2025, 9, 10), Location = "San Francisco" },
-        new Event { Name = "Music Festival", Date = new DateTime(2025, 7, 20), Location = "Los Angeles" }
-    };
+@foreach (var evt in events)
+{
+    <EventCard Event="evt" />
 }
 
-@foreach (var eventItem in events)
-{
-    <EventCard Event="eventItem" />
+@code {
+    private List<EventModel> events = new()
+    {
+        new EventModel { Name = "Corporate Gala", Date = DateTime.Today.AddDays(7), Location = "Calgary" },
+        new EventModel { Name = "Team Retreat", Date = DateTime.Today.AddDays(30), Location = "Banff" }
+    };
 }
