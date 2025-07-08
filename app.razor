@@ -1,6 +1,11 @@
-Router AppAssembly="@typeof(Program).Assembly">
-    <Found type="typeof(RouteView)" />
-    <NotFound>
-        <p>Sorry, there's nothing at this address.</p>
-    </NotFound>
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <h3>Oops! Page not found 🚧</h3>
+            <p>Return to <NavLink href="/">home</NavLink>.</p>
+        </LayoutView>
+    </NotFound>
 </Router>
