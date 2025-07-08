@@ -1,36 +1,7 @@
-
-@page "/event-details/{eventName}"
-
+@page "/eventdetails/{EventName}"
 @code {
-    [Parameter]
-    public string EventName { get; set; }
-
-    private Event eventDetails;
-
-    protected override void OnInitialized()
-    {
-        // Sample data for demonstration
-        var allEvents = new List<Event>
-        {
-            new Event { Name = "Corporate Gala", Date = new DateTime(2025, 8, 15), Location = "New York" },
-            new Event { Name = "Tech Conference", Date = new DateTime(2025, 9, 10), Location = "San Francisco" },
-            new Event { Name = "Music Festival", Date = new DateTime(2025, 7, 20), Location = "Los Angeles" }
-        };
-
-        eventDetails = allEvents.FirstOrDefault(e => e.Name == EventName);
-    }
+    [Parameter]
+    public string EventName { get; set; }
 }
-
-@if (eventDetails != null)
-{
-    <div class="event-details">
-        <h2>@eventDetails.Name</h2>
-        <p>Date: @eventDetails.Date.ToString("MMMM dd, yyyy")</p>
-        <p>Location: @eventDetails.Location</p>
-        <a href="/register/@eventDetails.Name">Register</a>
-    </div>
-}
-else
-{
-    <p>Event not found.</p>
-}
+<h2>Details for: @EventName</h2>
+<p>Location and schedule coming soon!</p>
