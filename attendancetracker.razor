@@ -1,0 +1,19 @@
+<h4>Who's Attending</h4>
+<ul>
+@foreach (var attendee in attendance["Corporate Gala"])
+{
+    <li>@attendee</li>
+}
+</ul>
+
+@code {
+    private Dictionary<string, List<string>> attendance = new();
+
+    void MarkAttendance(string eventName, string attendee)
+    {
+        if (!attendance.ContainsKey(eventName))
+            attendance[eventName] = new List<string>();
+
+        attendance[eventName].Add(attendee);
+    }
+}
